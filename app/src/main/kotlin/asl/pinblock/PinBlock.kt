@@ -1,8 +1,5 @@
 package asl.pinblock
 
-import asl.Pan
-import asl.Pin
-
 class PinBlock(isoFactory: (String, String) -> IsoFormat, pin: Pin, pan: Pan) {
     val isoFormat = isoFactory(pin.toString(), pan.takeLast12())
 

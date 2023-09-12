@@ -1,4 +1,4 @@
-package asl
+package asl.pinblock
 
 data class Pan(private val value: String) {
     companion object {

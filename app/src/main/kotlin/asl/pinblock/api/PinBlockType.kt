@@ -1,7 +1,7 @@
 package asl.pinblock.api
 
-import asl.Pan
-import asl.Pin
+import asl.pinblock.Pan
+import asl.pinblock.Pin
 import asl.pinblock.Iso0Format
 import asl.pinblock.Iso3Format
 import asl.pinblock.PinBlock
