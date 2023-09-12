@@ -33,7 +33,7 @@ interface IsoFormat {
     fun fillDigits(): String
 
     fun panblock(): String {
-        return "0000" + pan.substring(pan.length - 13, pan.length - 1)
+        return "0000" + pan
     }
 
     fun xor(str1: String, str2: String): String {
@@ -57,6 +57,8 @@ class Iso0Format(override val pin: String, override val pan: String) : IsoFormat
 }
 
 // Implementation of IsoFormat with isoCode 3
+// NOTE: eftlab documentation is inconsistent as it both says that fill digits are random from 10 to 15 AND R is random value from X'0' to X'F'
+// NOTE: I decided to implement fill digits as random from 10 to 15 as I found ISO documentation that says that fill digits are random from 10 to 15
 class Iso3Format(override val pin: String, override val pan: String) : IsoFormat {
     override val isoCode = "3"
 

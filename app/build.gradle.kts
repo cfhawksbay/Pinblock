@@ -76,4 +76,5 @@ dependencies {
     implementation("androidx.core:core-ktx:1.10.1")
     testImplementation ("junit:junit:4.+")
     androidTestImplementation ("androidx.test.ext:junit:1.1.3")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
