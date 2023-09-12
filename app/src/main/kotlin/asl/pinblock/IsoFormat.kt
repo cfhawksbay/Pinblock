@@ -4,6 +4,12 @@ import java.util.Locale
 import kotlin.random.Random
 
 // Interface for ISO format
+
+private const val ISO_CODE_0 = "0"
+private const val ISO_CODE_3 = "3"
+private const val MAX_FILL_DIGITS = 14
+private const val MIN_RANDOM_FILL = 10
+private const val MAX_RANDOM_FILL = 16
 interface IsoFormat {
     val isoCode: String
     val pin: String
@@ -49,7 +55,7 @@ interface IsoFormat {
 
 // Implementation of IsoFormat with isoCode 0
 class Iso0Format(override val pin: String, override val pan: String) : IsoFormat {
-    override val isoCode = "0"
+    override val isoCode = ISO_CODE_0
 
     override fun fillDigits(): String {
         return "FFFFFFFFFFFFFF".substring(pin.length)
@@ -60,12 +66,12 @@ class Iso0Format(override val pin: String, override val pan: String) : IsoFormat
 // NOTE: eftlab documentation is inconsistent as it both says that fill digits are random from 10 to 15 AND R is random value from X'0' to X'F'
 // NOTE: I decided to implement fill digits as random from 10 to 15 as I found ISO documentation that says that fill digits are random from 10 to 15
 class Iso3Format(override val pin: String, override val pan: String) : IsoFormat {
-    override val isoCode = "3"
+    override val isoCode = ISO_CODE_3
 
     override fun fillDigits(): String {
         val fillDigits = StringBuilder()
-        for (i in pin.length until 14) {
-            fillDigits.append(Random.nextInt(10, 16).toString(16).uppercase(Locale.ROOT))
+        for (i in pin.length until MAX_FILL_DIGITS) {
+            fillDigits.append(Random.nextInt(MIN_RANDOM_FILL, MAX_RANDOM_FILL).toString(16).uppercase(Locale.ROOT))
         }
         return fillDigits.toString()
     }

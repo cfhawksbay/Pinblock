@@ -1,8 +1,11 @@
 package asl
 
 data class Pan(private val value: String) {
+    companion object {
+        const val MIN_DIGITS_COUNT = 12
+    }
     init {
-        require(value.length > 12) { "PAN must be at leat 13 digits" }
+        require(value.length > MIN_DIGITS_COUNT) { "PAN must be at leat 13 digits" }
         require(value.all { it.isDigit() }) { "PAN must be numeric" }
     }
 
