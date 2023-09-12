@@ -1,4 +1,4 @@
-# Improved project template for Android Studio
+# PINBLOCK CODING TEST
 Implemenation of Pinblock for coding test
 
 ## Main features:
